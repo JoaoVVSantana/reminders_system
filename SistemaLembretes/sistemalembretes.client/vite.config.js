@@ -12,7 +12,7 @@ const baseFolder =
         : `${process.env.HOME}/.aspnet/https`;
 
 const certificateArg = process.argv.map(arg => arg.match(/--name=(?<value>.+)/i)).filter(Boolean)[0];
-const certificateName = certificateArg ? certificateArg.groups.value : "remindersapp.client";
+const certificateName = certificateArg ? certificateArg.groups.value : "sistemalembretes.client";
 
 if (!certificateName) {
     console.error('Invalid certificate name. Run this script in the context of an npm/yarn script or pass --name=<<app>> explicitly.')
@@ -47,7 +47,7 @@ export default defineConfig({
     server: {
         proxy: {
             '^/weatherforecast': {
-                target: 'https://localhost:7077/',
+                target: 'https://localhost:7061/',
                 secure: false
             }
         },

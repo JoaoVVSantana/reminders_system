@@ -1,0 +1,6 @@
+@SistemaLembretes.Server_HostAddress = http://localhost:5128
+
+GET {{SistemaLembretes.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -10,7 +10,7 @@ namespace Backend.Models
 
         [Required(ErrorMessage = "Insira o título do lembrete")]
         [StringLength(100, ErrorMessage = "O título deve conter no máximo 100 caracteres")]
-        public string Titulo { get; set; }
+        public string? Titulo { get; set; }
 
         [StringLength(500, ErrorMessage = "A descrição deve conter no máximo 500 caracteres")]
         public string? Descricao { get; set; }

@@ -1,6 +1,0 @@
-@RemindersApp.Server_HostAddress = http://localhost:5225
-
-GET {{RemindersApp.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaLembretes.Server", "SistemaLembretes.Server\SistemaLembretes.Server.csproj", "{ECD5D680-29C9-4B66-8C10-B4C74747AB25}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sistemalembretes.client", "sistemalembretes.client\sistemalembretes.client.esproj", "{1FFCEA71-A022-48F5-8C26-23224D595083}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECD5D680-29C9-4B66-8C10-B4C74747AB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD5D680-29C9-4B66-8C10-B4C74747AB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD5D680-29C9-4B66-8C10-B4C74747AB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD5D680-29C9-4B66-8C10-B4C74747AB25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FFCEA71-A022-48F5-8C26-23224D595083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FFCEA71-A022-48F5-8C26-23224D595083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FFCEA71-A022-48F5-8C26-23224D595083}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1FFCEA71-A022-48F5-8C26-23224D595083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FFCEA71-A022-48F5-8C26-23224D595083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FFCEA71-A022-48F5-8C26-23224D595083}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C32FB5ED-3872-4245-BB61-AE54D9250588}
+	EndGlobalSection
+EndGlobal

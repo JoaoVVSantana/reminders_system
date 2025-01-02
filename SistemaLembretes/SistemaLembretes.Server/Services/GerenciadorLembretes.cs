@@ -4,6 +4,7 @@ using Backend.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Services
 {
@@ -25,6 +26,7 @@ namespace Backend.Services
         public void CriarLembrete(Lembrete lembrete)
         {
             ValidadorLembrete.Validar(lembrete);
+ 
             _repositorio.Criar(lembrete);
         }
 
