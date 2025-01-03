@@ -1,10 +1,10 @@
 using Backend.Models;
 using Backend.Data;
-using Backend.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using Xunit.Sdk;
 
 namespace Backend.Services
 {
@@ -16,17 +16,18 @@ namespace Backend.Services
         Lembrete ObterLembretePorId(int id);
         void AtualizarLembrete(int id, Lembrete lembreteAtualizado);
         void ExcluirLembrete(int id);
-        void MarcarComoConcluido(int id);
+        
     }
 
     public class GerenciadorLembretes(IRepositorioLembretes repositorio) : IGerenciadorLembretes
     {
-        private readonly IRepositorioLembretes _repositorio = repositorio;
+        private IRepositorioLembretes _repositorio = repositorio;
 
         public void CriarLembrete(Lembrete lembrete)
         {
-            ValidadorLembrete.Validar(lembrete);
- 
+        
+            if (lembrete.DataLembrete <= DateTime.Now) throw new Exception ("A data deve ser futura");
+
             _repositorio.Criar(lembrete);
         }
 
@@ -53,7 +54,7 @@ namespace Backend.Services
             lembreteExistente.Descricao = lembreteAtualizado.Descricao;
             lembreteExistente.DataLembrete = lembreteAtualizado.DataLembrete;
             lembreteExistente.Concluido = lembreteAtualizado.Concluido;
-            lembreteExistente.DataAtualizacao = DateTime.Now;
+            
 
             _repositorio.Atualizar(lembreteExistente);
         }
@@ -64,12 +65,6 @@ namespace Backend.Services
             _repositorio.Excluir(id);
         }
 
-        public void MarcarComoConcluido(int id)
-        {
-            var lembrete = _repositorio.ObterPorId(id) ?? throw new KeyNotFoundException("Lembrete não encontrado.");
-            lembrete.Concluido = true;
-            lembrete.DataAtualizacao = DateTime.Now;
-            _repositorio.Atualizar(lembrete);
-        }
+        
     }
 }

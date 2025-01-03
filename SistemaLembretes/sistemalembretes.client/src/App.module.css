@@ -1,0 +1,205 @@
+﻿.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    margin: 0;
+    min-height: 100vh; 
+    padding: 0;
+    background-color: #242424;
+}
+.titulo {
+    text-align: center;
+    font-size: 50px;
+    color: #fff;
+}
+
+.novoLembrete {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
+    padding: 5px;
+    gap: 5px; 
+    background-color: #242424;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 95%;
+    max-height: 100%;
+    margin: 0 auto; 
+}
+
+    .novoLembrete input,
+    .novoLembrete textarea {
+        flex: 1 1 calc(50% - 20px); 
+        min-width: 500px; 
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; 
+    }
+
+    .novoLembrete textarea {
+        height: 100px;
+        resize: none; 
+    }
+
+    .novoLembrete button {
+        flex: 1 1 100%; 
+        padding: 10px 20px;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+        .novoLembrete button:hover {
+            background-color: #218838;
+        }
+
+.listaLembretes {
+    margin-top: 0px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    max-width: 95%; 
+    margin:auto; 
+}
+
+.colunaLembrete {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex: 1 1 calc(33.33% - 20px);
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px;
+    position: relative;
+}
+
+    .colunaLembrete li div strong {
+        word-break: break-word; 
+        overflow-wrap: break-word; 
+        white-space: normal; 
+        display: block; 
+        text-align: left; 
+        max-width: 100%; 
+    }
+
+
+    .colunaLembrete li {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 10px;
+        
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .colunaLembrete h3 {
+        text-align:center;
+        justify-content:center;
+    }
+    .colunaLembrete button {
+        align-items: flex-end;
+        justify-content: flex-end;
+  
+    }
+    
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltipText {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 999;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltipText {
+    visibility: visible;
+    opacity: 1; 
+}
+
+
+button.create {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    margin-left: 20px;
+}
+
+    button.create:hover {
+        background-color: #218838;
+    }
+
+
+.deleteButton {
+    position: absolute;
+    bottom: 10px; 
+    right: 10px; 
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.8rem;
+    font-family: 'Arial Rounded MT';
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .deleteButton:hover {
+        background-color: #c82333;
+    }
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.sucess {
+    color: forestgreen;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

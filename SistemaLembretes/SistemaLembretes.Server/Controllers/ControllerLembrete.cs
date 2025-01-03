@@ -1,4 +1,3 @@
-// Controllers/LembreteController.cs
 using Backend.Models;
 using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +12,7 @@ namespace Backend.Controllers
     {
         private readonly IGerenciadorLembretes _gerenciadorLembretes = gerenciadorLembretes;
 
-        [HttpGet]
+        [HttpGet("todos")]
         public IActionResult ObterTodosLembretes()
         {
             try
@@ -23,11 +22,11 @@ namespace Backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { message = "Erro ao obter lembretes.", details = ex.Message });
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}/obterLembrete")]
         public IActionResult ObterLembretePorId(int id)
         {
             try
@@ -37,55 +36,35 @@ namespace Backend.Controllers
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("Lembrete não encontrado.");
+                return NotFound(new { message = "Lembrete não encontrado." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { message = "Erro ao obter lembrete.", details = ex.Message });
             }
         }
 
-        [HttpPost]
+        [HttpPost("criarLembrete")]
         public IActionResult CriarLembrete([FromBody] Lembrete lembrete)
         {
             try
             {
+                if (lembrete.DataLembrete <= DateTime.Now) throw new ValidationException("A data deve ser futura");
+
                 _gerenciadorLembretes.CriarLembrete(lembrete);
                 return CreatedAtAction(nameof(ObterLembretePorId), new { id = lembrete.Id }, lembrete);
             }
             catch (ValidationException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = "Erro de validação.", details = ex.Message });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { message = "Erro ao criar lembrete.", details = ex.Message });
             }
         }
 
-        [HttpPut("{id}")]
-        public IActionResult AtualizarLembrete(int id, [FromBody] Lembrete lembrete)
-        {
-            try
-            {
-                _gerenciadorLembretes.AtualizarLembrete(id, lembrete);
-                return NoContent();
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound("Lembrete não encontrado.");
-            }
-            catch (ValidationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}/apagarLembrete")]
         public IActionResult ExcluirLembrete(int id)
         {
             try
@@ -95,29 +74,11 @@ namespace Backend.Controllers
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("Lembrete não encontrado.");
+                return NotFound(new { message = "Lembrete não encontrado." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-        [HttpPatch("{id}/concluir")]
-        public IActionResult MarcarComoConcluido(int id)
-        {
-            try
-            {
-                _gerenciadorLembretes.MarcarComoConcluido(id);
-                return NoContent();
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound("Lembrete não encontrado.");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { message = "Erro ao excluir lembrete.", details = ex.Message });
             }
         }
     }

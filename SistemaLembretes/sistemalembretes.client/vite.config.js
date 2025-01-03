@@ -44,17 +44,25 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url))
         }
     },
+    css: {
+        modules: {
+            scopeBehaviour: 'local',
+            generateScopedName: '[name]__[local]___[hash:base64:5]'
+        }
+    },
     server: {
         proxy: {
-            '^/weatherforecast': {
-                target: 'https://localhost:7061/',
-                secure: false
+            '/api/lembrete': {
+                target: 'http://localhost:5000/',
+                secure: false,
+                changeOrigin: true
             }
+            
         },
-        port: 5173,
+        port: 3000,
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
         }
     }
-})
+});
