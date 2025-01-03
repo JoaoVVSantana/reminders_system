@@ -18,16 +18,17 @@ Esta documentação cobre os passos necessários para configurar, executar e tes
 	 - cd ... reminders_system\SistemaLembretes\SistemaLembretes.Server 'dotnet restore'
  4.  Instalar Dependências do Frontend:
 	 -  cd ... reminders_system\SistemaLembretes\sistemalembretes.client 'npm install'
- 5. Execução Backend. Acesse o diretório do backend: cd backend. Execute o servidor: dotnet run . O backend estará na porta: http://localhost:5000
- 6.  Frontend . Acesse o diretório do frontend: cd frontend. Execute o servidor de desenvolvimento: npm start. A aplicação estará na porta: http://localhost:3000 
- 7. Testes Automatizados Backend. No diretório do backend, execute: dotnet test SistemaLembretes.Server. Para rodar os testes do React, utilize: npm test API 
- 8. Endpoints - 
+ 5. Execução Backend. Acesse o diretório do backend: cd backend. Execute o servidor: 
+*dotnet run* 	. O backend estará na porta: http://localhost:5000
+ 6.  Frontend . Ao executar o backend, o frontend será executado automaticamente. Caso queira executar apenas ele, acesse o diretório do frontend: cd frontend. Execute o servidor de desenvolvimento: *npm run dev*. A aplicação estará na porta: http://localhost:3000 
+ 7. Testes Automatizados Backend. No diretório do backend, execute: dotnet test SistemaLembretes.Server.
+ 8. Testes Automatizados Frontend. No diretório do frontend, execute: npm run test. 
+ 9. Endpoints - 
  - GET /api/lembrete - Lista todos os lembretes. 
  - GET /api/lembrete/{id} - Retorna um lembrete pelo ID. 
  - POST /api/lembrete - Cria um novo lembrete. 
- -  PUT /api/lembrete/{id} - Atualiza um lembrete existente. (não implementada)
  -  DELETE /api/lembrete/{id} - Exclui um lembrete. 
- -  PATCH /api/lembrete/{id}/concluir - Marca um lembrete como concluído. (não implementada)
+
 # Premissas e Decisões de Projeto 
 ## Estrutura do Backend
 
