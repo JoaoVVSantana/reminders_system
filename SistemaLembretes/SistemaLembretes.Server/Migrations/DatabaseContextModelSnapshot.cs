@@ -26,22 +26,16 @@ namespace SistemaLembretes.Server.Migrations
                     b.Property<bool>("Concluido")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("DataAtualizacao")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("DataLembrete")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
-                        .HasMaxLength(500)
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

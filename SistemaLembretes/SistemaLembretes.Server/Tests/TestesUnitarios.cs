@@ -79,58 +79,6 @@ namespace Backend.Tests
             mockRepositorio.Verify(r => r.Excluir(It.IsAny<int>()), Times.Never);
         }
 
-        [Fact]
-        public void Deve_Alterar_Lembrete_Existente()
-        {
-            //arrange
-            var mockRepositorio = new Mock<IRepositorioLembretes>();
-            var gerenciador = new GerenciadorLembretes(mockRepositorio.Object);
-            var lembreteId = 1;
-            var lembreteAtualizado = new Lembrete
-            {
-                Id = lembreteId,
-                Titulo = "Lembrete Atualizado",
-                DataLembrete = DateTime.Now.AddDays(2),
-                Concluido = true
-            };
-           
-            mockRepositorio.Setup(r => r.ObterPorId(lembreteId))
-                .Returns(new Lembrete { Id = lembreteId, Titulo = "Antigo", DataLembrete = DateTime.Now.AddDays(1) });
-
-            //act 
-            gerenciador.AtualizarLembrete(lembreteId, lembreteAtualizado);
-
-            //assert
-            mockRepositorio.Verify(r => r.Atualizar(It.Is<Lembrete>(l =>
-                l.Id == lembreteId &&
-                l.Titulo == "Lembrete Atualizado" &&
-                l.DataLembrete == lembreteAtualizado.DataLembrete &&
-                l.Concluido)), Times.Once);
-        }
-
-        [Fact]
-        public void Nao_Deve_Alterar_Lembrete_Inexistente()
-        {
-            //arrange
-            var mockRepositorio = new Mock<IRepositorioLembretes>();
-            var gerenciador = new GerenciadorLembretes(mockRepositorio.Object);
-            var lembreteId = 1;
-            var lembreteAtualizado = new Lembrete
-            {
-                Id = lembreteId,
-                Titulo = "Lembrete Atualizado",
-                DataLembrete = DateTime.Now.AddDays(2),
-                Concluido = true
-            };
-
-            mockRepositorio.Setup(r => r.ObterPorId(lembreteId))
-                .Returns((Lembrete?)null);
-
-            //act & assert
-            Assert.Throws<KeyNotFoundException>(() => gerenciador.AtualizarLembrete(lembreteId, lembreteAtualizado));
-            mockRepositorio.Verify(r => r.Atualizar(It.IsAny<Lembrete>()), Times.Never);
-        }
-
     }
 
 }

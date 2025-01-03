@@ -25,10 +25,32 @@ namespace Backend.Services
 
         public void CriarLembrete(Lembrete lembrete)
         {
-        
-            if (lembrete.DataLembrete <= DateTime.Now) throw new Exception ("A data deve ser futura");
+
+            ValidarLembrete(lembrete);
 
             _repositorio.Criar(lembrete);
+               
+            
+            
+        }
+
+        private void ValidarLembrete (Lembrete lembrete)
+        {
+
+            if (lembrete.Titulo.Length > 50)
+            {
+                throw new ValidationException("O titulo deve conter no maximo 50 caracteres.");
+            }
+
+            if (lembrete.Descricao != null && lembrete.Descricao.Length > 50)
+            {
+                throw new ValidationException("A descricao deve conter no maximo 50 caracteres.");
+            }
+
+            if (lembrete.DataLembrete.Date < DateTime.Today)
+            {
+                throw new ValidationException("A data nao pode ser no passado.");
+            }
         }
 
         public IEnumerable<Lembrete> ObterTodosLembretes()

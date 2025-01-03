@@ -12,8 +12,10 @@ const App = () => {
     useEffect(() => {
         axios.get('/api/lembrete/todos')
             .then(response => {
-                const lembretesOrdenados = response.data.sort((a, b) => new Date(a.dataLembrete) - new Date(b.dataLembrete));
-                setLembretes(lembretesOrdenados);
+                if (response && response.data) {
+                    const lembretesOrdenados = response.data.sort((a, b) => new Date(a.dataLembrete) - new Date(b.dataLembrete));
+                    setLembretes(lembretesOrdenados);
+                }
             })
             .catch(error => console.error('Erro ao carregar lembretes:', error));
     }, []);
@@ -25,12 +27,7 @@ const App = () => {
 
     const handleCriarLembrete = () => {
         if (!novoLembrete.titulo || !novoLembrete.data) {
-            setErro('Preencha todos os campos!');
-            return;
-        }
-        const dataAtual = new Date();
-        if (novoLembrete.data < dataAtual) {
-            setErro('A data não pode ser no passado!');
+            setErro('Os campos de Titulo e Data sao obrigatorios ');
             return;
         }
 
@@ -42,22 +39,18 @@ const App = () => {
 
         axios.post('/api/lembrete/criarLembrete', lembrete)
             .then(response => {
-                setLembretes(prev => [...prev, response.data].sort((a, b) => new Date(a.dataLembrete) - new Date(b.dataLembrete)));
+                setLembretes(prev => [...prev, response.data].sort((a, b) => new Date(a.dataLembrete) - new Date(b.dataLembrete))); //isso é pra organizar as datas em ordem
                 setNovoLembrete({ titulo: '', data: '', descricao: '' });
                 setErro('');
-                setMensagemSucesso('Lembrete criado com sucesso!');
+                setMensagemSucesso('Lembrete criado com sucesso! ');
                 setTimeout(() => setMensagemSucesso(''), 3000);
             })
             .catch(error => {
                 
-                    const backendMessage = error.response.data.message || 'Erro inesperado no servidor.';
+                    const backendMessage = error.response.data.message || 'Erro no servidor. ';
                     const backendDetails = error.response.data.details || '';
                     setErro(`${backendMessage}${backendDetails ? `: ${backendDetails}` : ''}`);
-                 
-
-                    
-                
-                console.error('Erro ao criar lembrete:', error);
+                console.error('Nao foi possivel criar o lembrete: ', error);
             });
     }
         const handleExcluirLembrete = (id) => {
@@ -67,11 +60,11 @@ const App = () => {
                 })
                 .catch(error => {
                     if (error.response && error.response.data) {
-                        setErro(error.response.data.message || 'Erro ao excluir lembrete.');
+                        setErro(error.response.data.message || 'Erro ao excluir lembrete ');
                     } else {
-                        setErro('Erro de conexão com o servidor.');
+                        setErro('Erro de conexão com o servidor ');
                     }
-                    console.error('Erro ao excluir lembrete:', error);
+                    console.error('Erro ao excluir lembrete: ', error);
                 });
         };
 

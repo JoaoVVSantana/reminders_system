@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SistemaLembretes.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,12 +17,10 @@ namespace SistemaLembretes.Server.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Titulo = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Descricao = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    Titulo = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    Descricao = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
                     DataLembrete = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Concluido = table.Column<bool>(type: "INTEGER", nullable: false),
-                    DataCriacao = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DataAtualizacao = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    Concluido = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

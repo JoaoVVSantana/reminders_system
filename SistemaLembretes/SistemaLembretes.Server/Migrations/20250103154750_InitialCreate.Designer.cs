@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SistemaLembretes.Server.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250102191907_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250103154750_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,22 +29,16 @@ namespace SistemaLembretes.Server.Migrations
                     b.Property<bool>("Concluido")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("DataAtualizacao")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("DataLembrete")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
-                        .HasMaxLength(500)
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

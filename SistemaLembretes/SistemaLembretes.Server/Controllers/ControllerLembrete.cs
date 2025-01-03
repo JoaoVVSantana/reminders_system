@@ -18,11 +18,11 @@ namespace Backend.Controllers
             try
             {
                 var lembretes = _gerenciadorLembretes.ObterTodosLembretes();
-                return Ok(lembretes);
+                return Ok(lembretes); //http 200
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Erro ao obter lembretes.", details = ex.Message });
+                return StatusCode(500, new { message = "Erro ao obter lembretes. ", details = ex.Message });//server error
             }
         }
 
@@ -32,15 +32,15 @@ namespace Backend.Controllers
             try
             {
                 var lembrete = _gerenciadorLembretes.ObterLembretePorId(id);
-                return Ok(lembrete);
+                return Ok(lembrete);//http 200
             }
             catch (KeyNotFoundException)
             {
-                return NotFound(new { message = "Lembrete não encontrado." });
+                return NotFound(new { message = "Lembrete não encontrado. " });//http 404
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Erro ao obter lembrete.", details = ex.Message });
+                return StatusCode(500, new { message = "Erro ao obter lembrete. ", details = ex.Message });//server error
             }
         }
 
@@ -49,18 +49,16 @@ namespace Backend.Controllers
         {
             try
             {
-                if (lembrete.DataLembrete <= DateTime.Now) throw new ValidationException("A data deve ser futura");
-
                 _gerenciadorLembretes.CriarLembrete(lembrete);
-                return CreatedAtAction(nameof(ObterLembretePorId), new { id = lembrete.Id }, lembrete);
+                return CreatedAtAction(nameof(ObterLembretePorId), new { id = lembrete.Id }, lembrete);//http 201
             }
             catch (ValidationException ex)
             {
-                return BadRequest(new { message = "Erro de validação.", details = ex.Message });
+                return BadRequest(new { message = "Erro ao criar: ", details = ex.Message });//http 400
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Erro ao criar lembrete.", details = ex.Message });
+                return StatusCode(500, new { message = "Erro ao criar lembrete: ", details = ex.Message });//server error
             }
         }
 
@@ -70,15 +68,15 @@ namespace Backend.Controllers
             try
             {
                 _gerenciadorLembretes.ExcluirLembrete(id);
-                return NoContent();
+                return NoContent();//http 204
             }
             catch (KeyNotFoundException)
             {
-                return NotFound(new { message = "Lembrete não encontrado." });
+                return NotFound(new { message = "Lembrete não encontrado. " });//http 404
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Erro ao excluir lembrete.", details = ex.Message });
+                return StatusCode(500, new { message = "Erro ao excluir lembrete. ", details = ex.Message });//server error
             }
         }
     }
