@@ -5,7 +5,7 @@ Esta documentação cobre os passos necessários para configurar, executar e tes
  -  Node.js: Versão 16 ou superior. 
  -  Gerenciador de Pacotes: NPM ou Yarn. 
  - Banco de Dados: SQLite (pré-configurado no projeto). 
- - Navegador Moderno: Para acessar a interface web. Bibliotecas e 
+
  ## Frameworks Utilizados 
  - Backend:  ASP.NET Core para a API. 
  - Entity Framework Core para o banco de dados. 
