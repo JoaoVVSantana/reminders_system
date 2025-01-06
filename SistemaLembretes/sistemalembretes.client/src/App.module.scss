@@ -118,7 +118,7 @@
         position: relative;
         display: inline-block;
         cursor: pointer;
-
+    
         .tooltipText {
             visibility: hidden;
             width: 200px;
@@ -134,13 +134,14 @@
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s;
-
-            &:hover {
-                visibility: visible;
-                opacity: 1;
-            }
+        }
+    
+        &:hover .tooltipText {
+            visibility: visible;
+            opacity: 1;
         }
     }
+    
 
     .deleteButton {
         position: absolute;
