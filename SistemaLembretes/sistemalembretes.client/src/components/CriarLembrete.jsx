@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import styles from '../App.module.css';
+import styles from '../App.module.scss';
 
 const CriarLembrete = ({ onLembreteCriado }) => {
     const [novoLembrete, setNovoLembrete] = useState({ titulo: '', data: '', descricao: '' });

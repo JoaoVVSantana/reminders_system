@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CriarLembrete from './components/CriarLembrete';
 import ListarLembretes from './components/ListarLembretes';
-import styles from './App.module.css';
+import styles from './App.module.scss';
 
 const App = () => {
     const [lembretes, setLembretes] = useState([]);
