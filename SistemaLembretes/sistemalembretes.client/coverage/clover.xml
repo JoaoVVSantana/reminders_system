@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1736178328263" clover="3.2.0">
+  <project timestamp="1736178328263" name="All files">
+    <metrics statements="33" coveredstatements="33" conditionals="16" coveredconditionals="15" methods="11" coveredmethods="10" elements="60" coveredelements="58" complexity="0" loc="33" ncloc="33" packages="1" files="2" classes="2"/>
+    <file name="CriarLembrete.jsx" path="C:\Users\jvict\OneDrive\Documentos\GitHub\reminders_system\SistemaLembretes\sistemalembretes.client\src\components\CriarLembrete.jsx">
+      <metrics statements="23" coveredstatements="23" conditionals="14" coveredconditionals="13" methods="6" coveredmethods="5"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="12" type="stmt"/>
+      <line num="7" count="12" type="stmt"/>
+      <line num="8" count="12" type="stmt"/>
+      <line num="10" count="12" type="stmt"/>
+      <line num="11" count="5" type="stmt"/>
+      <line num="12" count="5" type="stmt"/>
+      <line num="15" count="12" type="stmt"/>
+      <line num="16" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="21" count="2" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="30" count="1" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="36" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="37" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="43" count="12" type="stmt"/>
+    </file>
+    <file name="ListarLembretes.jsx" path="C:\Users\jvict\OneDrive\Documentos\GitHub\reminders_system\SistemaLembretes\sistemalembretes.client\src\components\ListarLembretes.jsx">
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="4" type="stmt"/>
+      <line num="6" count="9" type="stmt"/>
+      <line num="7" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="8" count="9" type="stmt"/>
+      <line num="9" count="9" type="stmt"/>
+      <line num="12" count="4" type="stmt"/>
+      <line num="15" count="6" type="stmt"/>
+      <line num="19" count="9" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

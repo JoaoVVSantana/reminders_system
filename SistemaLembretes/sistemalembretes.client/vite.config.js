@@ -51,6 +51,9 @@ export default defineConfig({
         }
     },
     server: {
+        mimeTypes: {
+            html: 'text/html; charset=UTF-8',
+        },
         proxy: {
             '/api/lembrete': {
                 target: 'http://localhost:5000/',
@@ -63,6 +66,6 @@ export default defineConfig({
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
-        }
+        },
     }
 });

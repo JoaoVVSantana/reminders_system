@@ -29,15 +29,13 @@ namespace Backend.Services
             ValidarLembrete(lembrete);
 
             _repositorio.Criar(lembrete);
-               
-            
             
         }
 
         private void ValidarLembrete (Lembrete lembrete)
         {
 
-            if (lembrete.Titulo.Length > 50)
+            if (lembrete.Titulo?.Length > 50)
             {
                 throw new ValidationException("O titulo deve conter no maximo 50 caracteres.");
             }
@@ -86,7 +84,5 @@ namespace Backend.Services
             Lembrete lembrete = _repositorio.ObterPorId(id) ?? throw new KeyNotFoundException("Lembrete não encontrado.");
             _repositorio.Excluir(id);
         }
-
-        
     }
 }
