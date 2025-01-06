@@ -19,7 +19,7 @@ Esta documentação cobre os passos necessários para configurar, executar e tes
 ## Configuração do Ambiente
 
 1. **Clone o Repositório**
-   - `git clone <https://github.com/JoaoVVSantana/reminders_system>`
+   - `git clone https://github.com/JoaoVVSantana/reminders_system`
    
 2. **Configuração do Banco de Dados**
    - O projeto utiliza SQLite por padrão.
